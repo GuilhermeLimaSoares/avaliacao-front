@@ -7,6 +7,7 @@ import { UserListComponent } from './src/pages/user-list/user-list.component';
 import { UserDetailComponent } from './src/pages/user-detail/user-detail.component';
 import { UserEditComponent } from './src/pages/user-edit/user-edit.component';
 import { CreateUserComponent } from './src/pages/create-user/create-user.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CreateUserComponent } from './src/pages/create-user/create-user.compone
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
