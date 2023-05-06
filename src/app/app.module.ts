@@ -10,6 +10,8 @@ import { CreateUserComponent } from './src/pages/create-user/create-user.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersService } from './src/services/users.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './src/components/header/header.component';
+import { FooterComponent } from './src/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     UserListComponent,
     UserDetailComponent,
     UserEditComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
