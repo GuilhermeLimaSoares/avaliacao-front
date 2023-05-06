@@ -12,6 +12,7 @@ import { UsersService } from './src/services/users.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './src/components/header/header.component';
 import { FooterComponent } from './src/components/footer/footer.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FooterComponent } from './src/components/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]
