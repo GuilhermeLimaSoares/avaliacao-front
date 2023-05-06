@@ -11,6 +11,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements AfterViewInit, OnInit {
+  currentPage: number = 1;
   displayedColumns: string[] = ['picture', 'name'];
   dataSource: MatTableDataSource<User>;
   pageSizeOptions: number[] = [5, 10, 25, 100];
@@ -45,6 +46,12 @@ export class UserListComponent implements AfterViewInit, OnInit {
 
   handlePageEvent(event: PageEvent): void {
     console.log('event:', event);
+    this.currentPage = event.pageIndex;
+    this.service.getUsers(event.pageIndex, event.pageSize).subscribe((response) => {
+      console.log('handlePageEvent:', response);
+      this.pageSizeTotalItems = response?.total;
+      this.dataSource = new MatTableDataSource(response?.data);
+    })
   }
 
 }

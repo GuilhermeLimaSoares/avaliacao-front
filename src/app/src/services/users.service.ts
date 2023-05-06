@@ -18,8 +18,11 @@ export class UsersService {
   options = { params: new HttpParams(this.httpParams), headers: this.headers };
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<Users> {
+  getUsers(currentPage: number = 1, limit: number = 10): Observable<Users> {
+    let params = new HttpParams()
+    .set('page', currentPage)
+    .set('limit', limit);
     return this.http
-      .get<Users>(environment.apiUrl, { headers: this.headers });
+      .get<Users>(environment.apiUrl, {params, headers: this.headers });
   }
 }
