@@ -12,6 +12,7 @@ import { UsersService } from './src/services/users.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './src/components/header/header.component';
 import { FooterComponent } from './src/components/footer/footer.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -29,6 +30,7 @@ import {MatTableModule} from '@angular/material/table';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatPaginatorModule,
     MatTableModule
   ],
   providers: [UsersService],
