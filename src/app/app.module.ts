@@ -8,6 +8,8 @@ import { UserDetailComponent } from './src/pages/user-detail/user-detail.compone
 import { UserEditComponent } from './src/pages/user-edit/user-edit.component';
 import { CreateUserComponent } from './src/pages/create-user/create-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UsersService } from './src/services/users.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
