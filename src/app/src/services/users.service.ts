@@ -13,16 +13,29 @@ import { Users } from '../models/users';
   providedIn: 'root',
 })
 export class UsersService {
-  headers = new HttpHeaders().set('Content-Type', 'application/json').set('app-id', '6452a8908edea0eafd918058');
+  headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('app-id', '6452a8908edea0eafd918058');
   httpParams: HttpParamsOptions = {} as HttpParamsOptions;
   options = { params: new HttpParams(this.httpParams), headers: this.headers };
   constructor(private http: HttpClient) {}
 
   getUsers(currentPage: number = 1, limit: number = 10): Observable<Users> {
+    let params = new HttpParams().set('page', currentPage).set('limit', limit);
+    return this.http.get<Users>(environment.apiUrl, {
+      params,
+      headers: this.headers,
+    });
+  }
+
+  createUser(firstName: string, lastName: string, email: string) {
     let params = new HttpParams()
-    .set('page', currentPage)
-    .set('limit', limit);
-    return this.http
-      .get<Users>(environment.apiUrl, {params, headers: this.headers });
+      .set('email', email)
+      .set('firstName', firstName)
+      .set('lastName', lastName);
+    return this.http.post<Users>(environment.apiUrl, {
+      params,
+      headers: this.headers,
+    });
   }
 }
