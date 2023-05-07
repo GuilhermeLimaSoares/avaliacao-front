@@ -57,6 +57,10 @@ export class UserListComponent implements AfterViewInit, OnInit {
       });
   }
 
+  showUserProfile(id: string): void {
+    this.router.navigate([`/users/detail-user/${id}`]);
+  }
+
   addUser(): void {
     this.router.navigate(['/register-user']);
   }

@@ -9,11 +9,13 @@ import { environment } from './../../../environments/environment.development';
 import { Observable } from 'rxjs';
 import { Users } from '../models/users';
 import { UserRegister } from '../models/userRegister';
+import { FullUser } from '../models/fullUser';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
+  currentIdUser: string = '';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -31,22 +33,38 @@ export class UsersService {
     });
   }
 
-  createUser(firstName: string, lastName: string, email: string): Observable<UserRegister> {
+  createUser(
+    firstName: string,
+    lastName: string,
+    email: string
+  ): Observable<UserRegister> {
     const payload = {
       email: email,
       firstName: firstName,
-      lastName: lastName
+      lastName: lastName,
     };
 
     const params = {
       email: email,
       firstName: firstName,
-      lastName: lastName
+      lastName: lastName,
     };
 
-    return this.http.post<UserRegister>(`${environment.apiUrl}/create`, payload, {
+    return this.http.post<UserRegister>(
+      `${environment.apiUrl}/create`,
+      payload,
+      {
+        headers: this.httpOptions.headers,
+        params: params,
+      }
+    );
+  }
+
+  searchUserById(id: any) {
+    let params = new HttpParams().set('id', id);
+    return this.http.get<FullUser>(`${environment.apiUrl}/${id}`, {
+      params,
       headers: this.httpOptions.headers,
-      params: params,
     });
   }
 }

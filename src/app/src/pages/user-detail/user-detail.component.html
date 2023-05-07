@@ -1,1 +1,46 @@
-<p>user-detail works!</p>
+<h2>User Profile</h2>
+
+<mat-list>
+  <h3 class="user-detail-title"><b>Personal informations</b></h3>
+  <div class="user-detail-img-container">
+    <img [src]="fullUserDetails?.picture" alt="Profile user face photograph" />
+  </div>
+  <mat-divider></mat-divider>
+  <mat-list-item
+    ><b>Full name: </b>{{ fullUserDetails?.firstName }}
+    {{ fullUserDetails?.lastName }}</mat-list-item
+  >
+  <mat-divider></mat-divider>
+  <mat-list-item><b>Gender: </b> {{ fullUserDetails?.gender }}</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item
+    ><b>Birth date: </b> {{ fullUserDetails?.dateOfBirth }}</mat-list-item
+  >
+</mat-list>
+
+<mat-list>
+  <h3 class="user-detail-title"><b>Location</b></h3>
+  <mat-list-item
+    ><b>Street: </b>{{ fullUserDetails?.location?.street }}
+    {{ fullUserDetails?.lastName }}</mat-list-item
+  >
+  <mat-divider></mat-divider>
+  <mat-list-item
+    ><b>City: </b> {{ fullUserDetails?.location?.city }}</mat-list-item
+  >
+  <mat-divider></mat-divider>
+  <mat-list-item
+    ><b>State: </b> {{ fullUserDetails?.location?.state }}</mat-list-item
+  >
+  <mat-divider></mat-divider>
+  <mat-list-item
+    ><b>Country: </b> {{ fullUserDetails?.location?.country }}</mat-list-item
+  >
+</mat-list>
+
+<mat-list>
+  <h3 class="user-detail-title"><b>Contact</b></h3>
+  <mat-list-item><b>Email: </b>{{ fullUserDetails?.email }}</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item><b>Phone: </b> {{ fullUserDetails?.phone }}</mat-list-item>
+</mat-list>

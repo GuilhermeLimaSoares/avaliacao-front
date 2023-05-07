@@ -30,6 +30,7 @@
               mat-mini-fab
               color="primary"
               aria-label="Example icon button with a delete icon"
+              (click)="showUserProfile(element?.id)"
             >
               <mat-icon>account_box</mat-icon>
             </button>
@@ -60,13 +61,12 @@
   </table>
   <div class="container-paginator">
     <mat-paginator
-    [length]="pageSizeTotalItems"
-    [pageSize]="10"
-    [pageSizeOptions]="pageSizeOptions"
-    (page)="handlePageEvent($event)"
-    aria-label="Select page"
-  >
-  </mat-paginator>
+      [length]="pageSizeTotalItems"
+      [pageSize]="10"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="handlePageEvent($event)"
+      aria-label="Select page"
+    >
+    </mat-paginator>
   </div>
-
 </div>
