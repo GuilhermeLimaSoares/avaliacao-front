@@ -12,6 +12,9 @@ import { UsersService } from './src/services/users.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './src/components/header/header.component';
 import { FooterComponent } from './src/components/footer/footer.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 
@@ -30,6 +33,9 @@ import {MatTableModule} from '@angular/material/table';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatIconModule,
     MatPaginatorModule,
     MatTableModule
   ],

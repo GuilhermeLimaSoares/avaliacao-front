@@ -12,7 +12,7 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class UserListComponent implements AfterViewInit, OnInit {
   currentPage: number = 1;
-  displayedColumns: string[] = ['picture', 'name'];
+  displayedColumns: string[] = ['picture', 'name', 'optionals'];
   dataSource: MatTableDataSource<User>;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   pageSizeTotalItems: number = 0;
