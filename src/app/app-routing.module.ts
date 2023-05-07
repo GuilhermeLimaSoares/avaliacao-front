@@ -12,7 +12,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'create-user',
+    path: 'register-user',
     component: CreateUserComponent,
   },
   {
