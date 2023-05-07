@@ -1,11 +1,21 @@
+.container-add-user {
+  display: flex;
+  justify-content: right;
+  padding: 16px 0;
+}
+
 .user {
-  &-list-table{
+  &-list-table {
     &__img {
       width: 72px;
     }
   }
 }
 
+
+.container-paginator {
+  margin-top: 16px;
+}
 
 .example-label {
   display: table-cell;

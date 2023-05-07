@@ -1,10 +1,14 @@
 <h2>Users</h2>
-
+<div class="container-add-user">
+  <button mat-raised-button color="primary">
+    Add User <mat-icon>note_add</mat-icon>
+  </button>
+</div>
 <div class="user-list-table">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Picture Column -->
     <ng-container matColumnDef="picture">
-      <th mat-header-cell *matHeaderCellDef>Picture.</th>
+      <th mat-header-cell *matHeaderCellDef>Picture Profile</th>
       <td mat-cell *matCellDef="let element">
         <img [src]="element.picture" alt="" class="user-list-table__img" />
       </td>
@@ -20,11 +24,10 @@
     <ng-container matColumnDef="optionals">
       <th mat-header-cell *matHeaderCellDef>Optionals</th>
       <td mat-cell *matCellDef="let element">
-        <!-- <div class="example-button-container"> -->
         <mat-grid-list cols="3" rowHeight="1:1">
           <mat-grid-tile>
             <button
-              mat-fab
+              mat-mini-fab
               color="primary"
               aria-label="Example icon button with a delete icon"
             >
@@ -33,7 +36,7 @@
           </mat-grid-tile>
           <mat-grid-tile>
             <button
-              mat-fab
+              mat-mini-fab
               color="primary"
               aria-label="Example icon button with a delete icon"
             >
@@ -42,25 +45,21 @@
           </mat-grid-tile>
           <mat-grid-tile>
             <button
-              mat-fab
+              mat-mini-fab
               color="primary"
               aria-label="Example icon button with a delete icon"
             >
               <mat-icon>delete</mat-icon>
             </button>
           </mat-grid-tile>
-
-          <!-- </div> -->
-          <!-- <button>view</button>
-        <button>edit</button>
-        <button>delete</button> -->
         </mat-grid-list>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-  <mat-paginator
+  <div class="container-paginator">
+    <mat-paginator
     [length]="pageSizeTotalItems"
     [pageSize]="10"
     [pageSizeOptions]="pageSizeOptions"
@@ -68,4 +67,6 @@
     aria-label="Select page"
   >
   </mat-paginator>
+  </div>
+
 </div>
