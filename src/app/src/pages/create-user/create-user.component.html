@@ -1,1 +1,37 @@
-<p>create-user works!</p>
+<h2>Register User</h2>
+
+<div class="form-container">
+  <form [formGroup]="form" class="form">
+    <mat-form-field appearance="fill">
+      <mat-label for="firstName">First Name</mat-label>
+      <input matInput formControlName="firstName" id="firstName" />
+      <mat-error *ngIf="form.get('firstName')?.errors && form.get('lastName')?.touched"
+      >First name is wrong or pending</mat-error
+    >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label for="lastName">Last Name</mat-label>
+      <input matInput formControlName="lastName" id="lastName" />
+      <mat-error *ngIf="form.get('lastName')?.errors && form.get('lastName')?.touched"
+      >Last name is wrong or pending</mat-error
+    >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label for="email">Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="email"
+        id="email"
+        required
+      />
+      <mat-error *ngIf="form.get('email')?.errors && form.get('email')?.touched"
+        >Email is wrong or pending</mat-error
+      >
+    </mat-form-field>
+    <div class="form-container-button">
+      <button mat-raised-button (click)="cancelRegister()" class="botao">Cancel</button>
+      <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="registerUser()">Confirm</button>
+    </div>
+  </form>
+</div>

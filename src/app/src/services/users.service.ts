@@ -8,34 +8,45 @@ import {
 import { environment } from './../../../environments/environment.development';
 import { Observable } from 'rxjs';
 import { Users } from '../models/users';
+import { UserRegister } from '../models/userRegister';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  headers = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('app-id', '6452a8908edea0eafd918058');
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'app-id': environment.token,
+    }),
+  };
   httpParams: HttpParamsOptions = {} as HttpParamsOptions;
-  options = { params: new HttpParams(this.httpParams), headers: this.headers };
   constructor(private http: HttpClient) {}
 
   getUsers(currentPage: number = 1, limit: number = 10): Observable<Users> {
     let params = new HttpParams().set('page', currentPage).set('limit', limit);
     return this.http.get<Users>(environment.apiUrl, {
       params,
-      headers: this.headers,
+      headers: this.httpOptions.headers,
     });
   }
 
-  createUser(firstName: string, lastName: string, email: string) {
-    let params = new HttpParams()
-      .set('email', email)
-      .set('firstName', firstName)
-      .set('lastName', lastName);
-    return this.http.post<Users>(environment.apiUrl, {
-      params,
-      headers: this.headers,
+  createUser(firstName: string, lastName: string, email: string): Observable<UserRegister> {
+    const payload = {
+      email: email,
+      firstName: firstName,
+      lastName: lastName
+    };
+
+    const params = {
+      email: email,
+      firstName: firstName,
+      lastName: lastName
+    };
+
+    return this.http.post<UserRegister>(`${environment.apiUrl}/create`, payload, {
+      headers: this.httpOptions.headers,
+      params: params,
     });
   }
 }
