@@ -6,6 +6,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Users } from '../../models/users';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogStatusComponent } from '../../components/dialog-status/dialog-status.component';
 
 @Component({
   selector: 'app-user-list',
@@ -16,13 +18,15 @@ export class UserListComponent implements AfterViewInit, OnInit {
   currentPage: number = 1;
   displayedColumns: string[] = ['picture', 'name', 'optionals'];
   dataSource: MatTableDataSource<User>;
+  isSuccessStatus: boolean = false;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   pageSizeTotalItems: number = 0;
+
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
 
-  constructor(private router: Router, private service: UsersService) {
+  constructor(private router: Router, private service: UsersService, public dialog: MatDialog,) {
     const users = [
       {
         title: '',
@@ -67,5 +71,30 @@ export class UserListComponent implements AfterViewInit, OnInit {
 
   editUser(id: string): void {
     this.router.navigate([`/users/edit-user/${id}`]);
+  }
+
+  statusMessage(isSuccessStatus: boolean): string {
+    return isSuccessStatus
+      ? 'Registration successfully deleted.'
+      : 'Failed to delete registration.';
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogStatusComponent, {
+      data: {
+        message: this.statusMessage(this.isSuccessStatus),
+        isSuccess: this.isSuccessStatus
+      },
+    });
+  }
+
+  deleteUser(id: string): void {
+    this.service.deleteUser(id).subscribe((response) => {
+      this.isSuccessStatus = true;
+      this.openDialog();
+    }, error => {
+      this.isSuccessStatus = false;
+      this.openDialog();
+    })
   }
 }

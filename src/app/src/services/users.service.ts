@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { Users } from '../models/users';
 import { UserRegister } from '../models/userRegister';
 import { FullUser } from '../models/fullUser';
+import { DeletedUser } from '../models/deleted-user';
 
 @Injectable({
   providedIn: 'root',
@@ -82,6 +83,12 @@ export class UsersService {
     };
     return this.http.put<FullUser>(`${environment.apiUrl}/${id}`, payload, {
       params,
+      headers: this.httpOptions.headers,
+    });
+  }
+
+  deleteUser(id: any): Observable<DeletedUser>{
+    return this.http.delete<DeletedUser>(`${environment.apiUrl}/${id}`, {
       headers: this.httpOptions.headers,
     });
   }
