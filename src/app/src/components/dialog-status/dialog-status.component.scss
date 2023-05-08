@@ -1,0 +1,23 @@
+.dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  height: 150px;
+  padding: 16px;
+
+  &-notification-container {
+    display: flex;
+    flex-direction: column;
+    column-gap: 16px;
+  }
+
+  &-button-container {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &-title {
+
+  }
+}

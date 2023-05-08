@@ -1,8 +1,13 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { UsersService } from '../../services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+
 import { FullUser } from '../../models/fullUser';
+
+import { DialogStatusComponent } from '../../components/dialog-status/dialog-status.component';
+
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -10,6 +15,7 @@ import { FullUser } from '../../models/fullUser';
   styleUrls: ['./user-edit.component.scss'],
 })
 export class UserEditComponent implements OnInit, DoCheck {
+  isSuccessStatus: boolean = false;
   id: any = '';
   form!: FormGroup;
   fullUserDetails: FullUser = {
@@ -33,6 +39,7 @@ export class UserEditComponent implements OnInit, DoCheck {
   };
 
   constructor(
+    public dialog: MatDialog,
     private formBuilder: FormBuilder,
     private service: UsersService,
     private route: ActivatedRoute,
@@ -70,12 +77,32 @@ export class UserEditComponent implements OnInit, DoCheck {
 
   editRegister(): void {
     const { email, firstName, lastName } = this.form.value;
-    this.service
-      .editUserById(this.id, email, firstName, lastName)
-      .subscribe((response) => {
+    this.service.editUserById(this.id, email, firstName, lastName).subscribe(
+      (response) => {
         alert('editado com sucesso!');
-      }, error => {
+        this.isSuccessStatus = true;
+        this.openDialog();
+      },
+      (error) => {
         alert('erro!');
-      });
+        this.isSuccessStatus = false;
+        this.openDialog();
+      }
+    );
+  }
+
+  statusMessage(isSuccessStatus: boolean): string {
+    return isSuccessStatus
+      ? 'Registration change performed successfully.'
+      : 'Failed to perform registration change.';
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogStatusComponent, {
+      data: {
+        message: this.statusMessage(this.isSuccessStatus),
+        isSuccess: this.isSuccessStatus
+      },
+    });
   }
 }

@@ -1,0 +1,11 @@
+<div class="dialog">
+  <div class="dialog-notification-container">
+    <h2 class="dialog-title">{{ status ? 'Success' : 'Error' }}</h2>
+    <span>{{ message }}</span>
+  </div>
+
+  <div class="dialog-button-container">
+    <button mat-raised-button (click)="onClose()" class="botao">Close</button>
+    <button mat-raised-button color="primary" (click)="backHome()">Home</button>
+  </div>
+</div>

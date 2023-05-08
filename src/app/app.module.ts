@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './src/components/header/header.component';
 import { FooterComponent } from './src/components/footer/footer.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -22,6 +23,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DialogStatusComponent } from './src/components/dialog-status/dialog-status.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserEditComponent,
     CreateUserComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    DialogStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     HttpClientModule,
     MatButtonModule,
+    MatDialogModule,
     MatDividerModule,
     MatFormFieldModule,
     MatGridListModule,
