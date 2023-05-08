@@ -30,16 +30,12 @@ export class UserDetailComponent {
   };
   constructor(
     private service: UsersService,
-    private router: Router,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     const id = this.route?.snapshot?.paramMap.get('id');
-    console.log('Profile id:', id, typeof id);
     this.service.searchUserById(id).subscribe((response) => {
-      // this.pensamento = pensamento;
-      console.log('response:', response);
       this.fullUserDetails = response;
     });
   }

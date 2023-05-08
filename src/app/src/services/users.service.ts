@@ -67,4 +67,22 @@ export class UsersService {
       headers: this.httpOptions.headers,
     });
   }
+
+  editUserById(id: any, email: string, firstName: string, lastName: string): Observable<FullUser> {
+    const payload = {
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+    };
+
+    const params = {
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+    };
+    return this.http.put<FullUser>(`${environment.apiUrl}/${id}`, payload, {
+      params,
+      headers: this.httpOptions.headers,
+    });
+  }
 }

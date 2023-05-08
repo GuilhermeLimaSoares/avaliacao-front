@@ -5,7 +5,7 @@
     <mat-form-field appearance="fill">
       <mat-label for="firstName">First Name</mat-label>
       <input matInput formControlName="firstName" id="firstName" />
-      <mat-error *ngIf="form.get('firstName')?.errors && form.get('lastName')?.touched"
+      <mat-error *ngIf="form.get('firstName')?.errors && form.get('firstName')?.touched"
       >First name is wrong or pending</mat-error
     >
     </mat-form-field>

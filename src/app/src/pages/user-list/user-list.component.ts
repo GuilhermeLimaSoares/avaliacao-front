@@ -64,4 +64,8 @@ export class UserListComponent implements AfterViewInit, OnInit {
   addUser(): void {
     this.router.navigate(['/register-user']);
   }
+
+  editUser(id: string): void {
+    this.router.navigate([`/users/edit-user/${id}`]);
+  }
 }

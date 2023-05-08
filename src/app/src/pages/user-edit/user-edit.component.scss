@@ -1,0 +1,11 @@
+.form-container {
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-button {
+    display: flex;
+    column-gap: 16px;
+  }
+}
