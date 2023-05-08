@@ -68,7 +68,10 @@ export class UserEditComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-    console.log('form:', this.form.value);
+    if(!this.form.value) return
+    if(this.form.value){
+      console.log('form:', this.form.value);
+    }
   }
 
   cancelRegister(): void {
@@ -79,12 +82,10 @@ export class UserEditComponent implements OnInit, DoCheck {
     const { email, firstName, lastName } = this.form.value;
     this.service.editUserById(this.id, email, firstName, lastName).subscribe(
       (response) => {
-        alert('editado com sucesso!');
         this.isSuccessStatus = true;
         this.openDialog();
       },
       (error) => {
-        alert('erro!');
         this.isSuccessStatus = false;
         this.openDialog();
       }

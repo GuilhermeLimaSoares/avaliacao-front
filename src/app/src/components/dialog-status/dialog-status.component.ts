@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 export interface DialogData {
-  status: string;
+  isSuccess: boolean;
   message: string;
 }
 
@@ -13,7 +13,7 @@ export interface DialogData {
 })
 export class DialogStatusComponent implements OnInit {
   message: string = '';
-  status: string = '';
+  isSuccess: boolean = false;
   constructor(
     public dialogRef: MatDialogRef<DialogStatusComponent>,
     private router: Router,
@@ -22,7 +22,7 @@ export class DialogStatusComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = this.data.message;
-    this.status = this.data.status;
+    this.isSuccess = this.data.isSuccess;
   }
 
   onClose(): void {

@@ -60,7 +60,7 @@ export class UsersService {
     );
   }
 
-  searchUserById(id: any) {
+  searchUserById(id: any): Observable<FullUser> {
     let params = new HttpParams().set('id', id);
     return this.http.get<FullUser>(`${environment.apiUrl}/${id}`, {
       params,
