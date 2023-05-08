@@ -22,6 +22,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DialogStatusComponent } from './src/components/dialog-status/dialog-status.component';
 
@@ -51,6 +52,7 @@ import { DialogStatusComponent } from './src/components/dialog-status/dialog-sta
     MatListModule,
     MatPaginatorModule,
     MatTableModule,
+    MatToolbarModule,
     ReactiveFormsModule
   ],
   providers: [UsersService],
