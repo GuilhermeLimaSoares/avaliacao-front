@@ -23,11 +23,7 @@
         placeholder="pat@example.com"
         formControlName="email"
         id="email"
-        required
       />
-      <mat-error *ngIf="form.get('email')?.errors && form.get('email')?.touched"
-        >Email is wrong or pending</mat-error
-      >
     </mat-form-field>
     <div class="form-container-button">
       <button mat-raised-button (click)="cancelRegister()" class="botao">Cancel</button>

@@ -52,7 +52,7 @@ export class UserEditComponent implements OnInit, DoCheck {
       this.fullUserDetails = response;
       this.form = this.formBuilder.group({
         firstName: [
-          `${this.fullUserDetails?.firstName}`,
+          this.fullUserDetails?.firstName,
           Validators.compose([Validators.required]),
         ],
         lastName: [
@@ -68,10 +68,7 @@ export class UserEditComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-    if(!this.form.value) return
-    if(this.form.value){
-      console.log('form:', this.form.value);
-    }
+      this.form.get('email')?.disable();
   }
 
   cancelRegister(): void {
